@@ -1,8 +1,5 @@
-require 'thor'
+require "ccme/version"
 
-class CCMe < Thor
-  desc "hello NAME", "say hello to NAME"
-  def hello(name)
-    puts "Hello #{name}"
-  end
+module CCMe
+  # Your code goes here...
 end
