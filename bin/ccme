@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'ccme'
+puts CCMe.start(ARGV)
