@@ -1,11 +1,15 @@
 require 'spec_helper'
 
-describe CCMe do
+describe CC do
   it 'has a version number' do
-    expect(CCMe::VERSION).not_to be nil
+    expect(CC::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(true).to eq(true)
+  describe CCMe do
+    subject { CCMe.new }
+    it { is_expected.to be_a(Thor) }
+
+    describe '#status' do
+    end
   end
 end
