@@ -4,6 +4,7 @@ PATH
     ccme (0.0.0)
       octokit
       rugged
+      terminal-notifier
 
 GEM
   remote: https://rubygems.org/

@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "octokit"
   spec.add_dependency "rugged"
+  spec.add_dependency "terminal-notifier"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "thor"
