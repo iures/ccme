@@ -14,6 +14,16 @@ class CCMe < Thor
     puts last_status.state
   end
 
+  desc "Watch", "Notify when status change"
+  def watch
+    current_status = status
+    while(current_status == 'pending')
+      current_status = status
+      sleep(10.seconds)
+    end
+    puts current_status
+  end
+
   desc "Github Token", "Set github token"
   def github_token(token=nil)
     if token

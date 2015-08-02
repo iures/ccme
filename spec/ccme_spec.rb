@@ -9,7 +9,12 @@ describe CC do
     subject { CCMe.new }
     it { is_expected.to be_a(Thor) }
 
-    describe '#status' do
+    describe '#watch' do
+      it 'keeps quering for status until it changes from pending' do
+        allow(subject).to receive(:status).and_return('pending', 'pending', 'success')
+        expect(subject).to receive(:status).exactly(3).times.and_return('pending', 'pending', 'success')
+        subject.watch
+      end
     end
   end
 end
