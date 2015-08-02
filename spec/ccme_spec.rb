@@ -12,6 +12,7 @@ describe CC do
     describe '#watch' do
       it 'keeps quering for status until it changes from pending' do
         allow(subject).to receive(:status).and_return('pending', 'pending', 'success')
+        allow(subject).to receive(:api_hits_every) { 0.1 }
         expect(subject).to receive(:status).exactly(3).times.and_return('pending', 'pending', 'success')
         subject.watch
       end

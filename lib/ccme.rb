@@ -5,6 +5,11 @@ require 'rugged'
 require 'octokit'
 
 class CCMe < Thor
+
+  def api_hits_every
+    4 #seconds
+  end
+
   desc "Status", "Look for circle status"
   def status
     unless last_status
@@ -12,6 +17,7 @@ class CCMe < Thor
     end
 
     puts last_status.state
+    last_status.state
   end
 
   desc "Watch", "Notify when status change"
@@ -19,7 +25,7 @@ class CCMe < Thor
     current_status = status
     while(current_status == 'pending')
       current_status = status
-      sleep(10.seconds)
+      sleep(api_hits_every)
     end
     puts current_status
   end
