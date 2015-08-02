@@ -23,7 +23,6 @@ class CCMe < Thor
       current_status = status
       sleep(CC::API_HITS_EVERY)
     end
-
     TerminalNotifier.notify(current_status, :appIcon => "assets/#{current_status}.png")
     current_status
   end
