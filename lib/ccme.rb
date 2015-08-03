@@ -21,7 +21,7 @@ class CCMe < Thor
     current_status = github_client.status
     while(current_status == 'pending')
       current_status = status
-      sleep(10)
+      sleep(CC::API_HITS_EVERY)
     end
 
     TerminalNotifier.notify(current_status, :appIcon => "assets/#{current_status}.png")
