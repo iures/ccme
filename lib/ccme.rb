@@ -16,8 +16,9 @@ class CCMe < Thor
     last_status
   end
 
-  desc "Watch", "Notify when status change"
-  def watch
+  desc "Watch REPO_PATH", "Notify when status change for a specific REPO_PATH"
+  def watch(repo_path = ".")
+    @repo_path = repo_path
     current_status = github_client.status
     while(current_status == 'pending')
       sleep(CC::API_HITS_EVERY)
@@ -28,7 +29,7 @@ class CCMe < Thor
     current_status
   end
 
-  desc "Github Token", "Set github token"
+  desc "Github TOKEN", "Set github TOKEN"
   def github_token(token=nil)
     if token
       Rugged::Config.global['github.token']  = token
@@ -46,7 +47,7 @@ class CCMe < Thor
   end
 
   def github_client
-    @github_client ||= Github.new(hub_token)
+    @github_client ||= Github.new(hub_token, @repo_path)
   end
 
   def hub_token
