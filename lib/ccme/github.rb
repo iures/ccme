@@ -5,10 +5,7 @@ class Github
   end
 
   def status
-    puts 'fetching status'
-    status = github_client.statuses(github_repo, head.oid).first.state
-    puts status
-    status
+    github_client.statuses(github_repo, head.oid).first.state
   end
 
   def github_client
