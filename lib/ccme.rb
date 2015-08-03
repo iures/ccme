@@ -8,7 +8,8 @@ require 'terminal-notifier'
 
 class CCMe < Thor
   desc "Status", "Look for circle status"
-  def status
+  def status(repo_path = ".")
+    @repo_path = repo_path
     unless last_status
       abort!('unknown', 0)
     end

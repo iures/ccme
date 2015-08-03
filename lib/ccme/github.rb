@@ -5,7 +5,7 @@ class Github
   end
 
   def status
-    github_client.statuses(github_repo, head.oid).first.state
+    github_client.statuses(github_repo, head.oid).try(:first).state
   end
 
   def github_client
