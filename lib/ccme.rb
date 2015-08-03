@@ -20,8 +20,8 @@ class CCMe < Thor
   def watch
     current_status = github_client.status
     while(current_status == 'pending')
-      current_status = status
       sleep(CC::API_HITS_EVERY)
+      current_status = github_client.status
     end
 
     TerminalNotifier.notify(current_status, :appIcon => "assets/#{current_status}.png")
